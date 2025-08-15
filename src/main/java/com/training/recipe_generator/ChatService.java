@@ -1,7 +1,9 @@
 package com.training.recipe_generator;
 
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ChatService {
     private final ChatModel chatModel;
 
