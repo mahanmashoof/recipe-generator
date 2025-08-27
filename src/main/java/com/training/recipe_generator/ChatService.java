@@ -13,8 +13,8 @@ public class ChatService {
         this.chatModel = chatModel;
     }
 
-    public String getResponse(String prompt) {
-        var chatOptions = OpenAiChatOptions.builder().model("gpt-4o-mini").temperature(0.7).maxTokens(1000).build();
+    public String getResponse(String prompt, int maxTokens) {
+        var chatOptions = OpenAiChatOptions.builder().model("gpt-4o-mini").temperature(0.7).maxTokens(maxTokens).build();
         var chatPrompt = new Prompt(prompt, chatOptions);
         return chatModel.call(chatPrompt).getResult().getOutput().getText();
     }
