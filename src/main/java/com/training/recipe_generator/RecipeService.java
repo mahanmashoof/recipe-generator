@@ -13,7 +13,7 @@ public class RecipeService {
         this.recipeModel = recipeModel;
     }
 
-    public String createRecipe(String ingredients, String dietType, int portions, String cuisine, int maxTokens) {
+    public String createRecipe(String ingredients, String dietType, int portions, String cuisine, int maxTokens, String password) {
         var chatOptions = OpenAiChatOptions.builder().model("gpt-4o-mini").temperature(0.7).maxTokens(maxTokens).build();
         String promptText = """
                 Create a recipe with the following requirements:
@@ -22,7 +22,7 @@ public class RecipeService {
                 Portions: %s
                 Cuisine: %s
                         
-                Please provide a recipe with simple and straightforward cooking instructions in a pointed list.
+                Please provide a recipe with simple and straightforward cooking instructions in json format with 3 objects only: title, ingredients and steps.
                 """.formatted(ingredients, dietType, portions, cuisine);
         var chatPrompt = new Prompt(promptText, chatOptions);
         return recipeModel.call(chatPrompt).getResult().getOutput().getText();
