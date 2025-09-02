@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/recipe").allowedOrigins("http://localhost:3000").allowedMethods("GET").allowedHeaders("*").allowCredentials(true);
+                registry.addMapping("/recipe").allowedOrigins("http://localhost:5173").allowedMethods("GET").allowedHeaders("*").allowCredentials(true);
             }
         };
     }
