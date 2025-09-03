@@ -8,19 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GenAiController {
 
-    private final ChatService chatService;
     private final RecipeService recipeService;
     private final AuthService authService;
 
-    public GenAiController(ChatService chatService, RecipeService recipeService, AuthService authService) {
-        this.chatService = chatService;
+    public GenAiController(RecipeService recipeService, AuthService authService) {
         this.recipeService = recipeService;
         this.authService = authService;
-    }
-
-    @GetMapping("/ask-ai")
-    public String getResponse(@RequestParam String prompt, @RequestParam(defaultValue = "100") int maxTokens) {
-        return chatService.getResponse(prompt, maxTokens);
     }
 
     @GetMapping("/recipe")
