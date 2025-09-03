@@ -21,8 +21,9 @@ public class RecipeService {
                 Diet type: %s
                 Portions: %s
                 Cuisine: %s
-                        
-                Please provide a recipe with simple and straightforward cooking instructions in json format with 3 objects only: title, ingredients and steps.
+                
+                The recipe should match the ingredients, but doesn't necessarily need to consist only of them. You are free to add more stuff if it results in a better recipe that matches the desired Diet type.
+                Please provide a recipe with simple and straightforward cooking instructions in json format as follows: title, ingredients: {title, quantity, unitOfMeasurement}, steps without numbers.
                 """.formatted(ingredients, dietType, portions, cuisine);
         var chatPrompt = new Prompt(promptText, chatOptions);
         return recipeModel.call(chatPrompt).getResult().getOutput().getText();
